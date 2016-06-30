@@ -37,6 +37,8 @@ tmp/
 Debug/*
 Release/*
 ipch/*
+*.log
+*cache
 
 # vim backup files
 *.swp

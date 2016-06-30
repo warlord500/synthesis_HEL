@@ -3,7 +3,7 @@
 
 extern "C" {
 	void setPWM(void* digital_port_pointer, unsigned short value, int32_t *status){}
-	EXPORT bool allocatePWMChannel(void* digital_port_pointer, int32_t *status) { return  false; }
+	 bool allocatePWMChannel(void* digital_port_pointer, int32_t *status) { return  false; }
 	void freePWMChannel(void* digital_port_pointer, int32_t *status){}
  unsigned short getPWM(void* digital_port_pointer, int32_t *status)
 {
