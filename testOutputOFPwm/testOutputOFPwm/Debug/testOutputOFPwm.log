@@ -1,0 +1,2 @@
+﻿testOutputOFPwm.obj : error LNK2019: unresolved external symbol _allocatePWMChannel referenced in function _main
+C:\Users\t_belej\Desktop\Aardvark-projects\Aardvark-HEL\Debug\testOutputOFPwm.exe : fatal error LNK1120: 1 unresolved externals

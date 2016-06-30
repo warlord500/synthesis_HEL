@@ -21,6 +21,9 @@
     <ClCompile Include="src\SPI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\PWM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="allwpilib\hal\include\Log.hpp">
@@ -105,6 +108,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="allwpilib\hal\include\hal\cpp\Semaphore.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\general.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
