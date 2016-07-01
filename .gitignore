@@ -31,7 +31,7 @@
 tmp/
 
 # visual studio stuff
-*.tlog
+*log
 *db
 *.vs/
 Debug/*
@@ -42,3 +42,6 @@ ipch/*
 *.swp
 *.swn
 *~
+
+#doxygen
+AllDocs/
