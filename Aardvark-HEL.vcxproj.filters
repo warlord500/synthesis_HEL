@@ -21,6 +21,9 @@
     <ClCompile Include="src\SPI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Power.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="allwpilib\hal\include\Log.hpp">

@@ -101,6 +101,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\I2C.cpp" />
+    <ClCompile Include="src\Power.cpp" />
     <ClCompile Include="src\SPI.cpp" />
   </ItemGroup>
   <ItemGroup>
