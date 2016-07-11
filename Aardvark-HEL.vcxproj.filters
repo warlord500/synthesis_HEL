@@ -11,24 +11,24 @@
     </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\I2C.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\PWM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\SPI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\PWM.cpp">
+    <ClCompile Include="src\dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="allwpilib\hal\include\Log.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="allwpilib\hal\include\ctre\ctre.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -44,12 +44,6 @@
     <ClInclude Include="allwpilib\hal\include\ctre\PDP.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="allwpilib\hal\include\hal\CanTalonSRX.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="allwpilib\hal\include\hal\Port.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="allwpilib\hal\include\hal\Accelerometer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -59,7 +53,22 @@
     <ClInclude Include="allwpilib\hal\include\hal\CAN.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="allwpilib\hal\include\hal\CanTalonSRX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="allwpilib\hal\include\hal\Compressor.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="allwpilib\hal\include\hal\cpp\priority_condition_variable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="allwpilib\hal\include\hal\cpp\priority_mutex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="allwpilib\hal\include\hal\cpp\Resource.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="allwpilib\hal\include\hal\cpp\Semaphore.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="allwpilib\hal\include\hal\Digital.hpp">
@@ -80,6 +89,9 @@
     <ClInclude Include="allwpilib\hal\include\hal\PDP.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="allwpilib\hal\include\hal\Port.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="allwpilib\hal\include\hal\Power.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -98,19 +110,10 @@
     <ClInclude Include="allwpilib\hal\include\hal\Utilities.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="allwpilib\hal\include\hal\cpp\priority_condition_variable.h">
+    <ClInclude Include="allwpilib\hal\include\Log.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="allwpilib\hal\include\hal\cpp\priority_mutex.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="allwpilib\hal\include\hal\cpp\Resource.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="allwpilib\hal\include\hal\cpp\Semaphore.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\general.h">
+    <ClInclude Include="custom_headers\general.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

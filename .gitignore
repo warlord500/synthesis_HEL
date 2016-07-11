@@ -31,16 +31,19 @@
 tmp/
 
 # visual studio stuff
+*log
 *.tlog
 *db
 *.vs/
-Debug/*
-Release/*
-ipch/*
-*.log
-*cache
+*Debug/*
+*Release/*
+*ipch/*
+*.cache
 
 # vim backup files
 *.swp
 *.swn
 *~
+
+#doxygen
+AllDocs/
