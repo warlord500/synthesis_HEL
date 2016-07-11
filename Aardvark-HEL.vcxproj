@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\I2C.cpp" />
+    <ClCompile Include="src\Power.cpp" />
     <ClCompile Include="src\PWM.cpp" />
     <ClCompile Include="src\SPI.cpp" />
   </ItemGroup>

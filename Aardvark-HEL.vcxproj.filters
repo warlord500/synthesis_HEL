@@ -25,6 +25,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\dllmain.cpp">
+    <ClCompile Include="src\Power.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
