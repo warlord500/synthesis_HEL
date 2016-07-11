@@ -158,11 +158,6 @@
     </ClCompile>
     <ClCompile Include="testOutputOFPwm.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Aardvark-HEL.vcxproj">
-      <Project>{d5d2b30d-b7fd-4052-a7e1-7a6308bf0f7e}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
