@@ -34,9 +34,10 @@ tmp/
 *log
 *db
 *.vs/
-Debug/*
-Release/*
-ipch/*
+*Debug/*
+*Release/*
+*ipch/*
+*.cache
 
 # vim backup files
 *.swp
