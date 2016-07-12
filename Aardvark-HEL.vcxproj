@@ -186,9 +186,6 @@
     <ClInclude Include="allwpilib\hal\include\Log.hpp" />
     <ClInclude Include="custom_headers\general.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="src\I2C.cpp~" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

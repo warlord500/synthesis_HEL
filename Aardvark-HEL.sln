@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testOutputOFPwm", "testOutputOFPwm\testOutputOFPwm\testOutputOFPwm.vcxproj", "{29494E1D-70F1-4687-8948-94420E37079E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{67FC03E1-3E19-431B-853A-FF8F01042C6D} = {67FC03E1-3E19-431B-853A-FF8F01042C6D}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Aardvark-HEL", "Aardvark-HEL.vcxproj", "{67FC03E1-3E19-431B-853A-FF8F01042C6D}"
 EndProject
