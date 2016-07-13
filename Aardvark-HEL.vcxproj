@@ -88,7 +88,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AARDVARKHEL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;AARDVARKHEL_EXPORTS;USE_WINAPI;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -149,11 +149,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Hal.cpp" />
     <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\I2C.cpp" />
     <ClCompile Include="src\Power.cpp" />
     <ClCompile Include="src\PWM.cpp" />
     <ClCompile Include="src\SPI.cpp" />
+    <ClCompile Include="src\StateNetworkServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="allwpilib\hal\include\ctre\ctre.h" />
@@ -185,6 +187,10 @@
     <ClInclude Include="allwpilib\hal\include\hal\Utilities.hpp" />
     <ClInclude Include="allwpilib\hal\include\Log.hpp" />
     <ClInclude Include="custom_headers\general.h" />
+    <ClInclude Include="custom_headers\pthread.h" />
+    <ClInclude Include="custom_headers\PWM_exposed.h" />
+    <ClInclude Include="custom_headers\StateNetworkServer.h" />
+    <ClInclude Include="custom_headers\StatePacket.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,16 +1,7 @@
-#include "StateNetwork/StateNetworkServer.h"
-#include <OSAL/OSAL.h>
+#include "StateNetworkServer.h"
 #include <stdio.h>
-#if USE_WINAPI
-#include <Windows.h>
-#elif USE_POSIX
-#include <unistd.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <stdlib.h>
-#include <arpa/inet.h>
-#endif
 
+#include "Windows.h"
 #include <string.h>
 
 StateNetworkServer::StateNetworkServer(void) {
@@ -70,7 +61,7 @@ void StateNetworkServer::SendStatePacket(OutputStatePacket pack) {
 }
 
 bool StateNetworkServer::ReceiveStatePacket(InputStatePacket *pack) {
-	ULONG available;
+	//ULONG available;
 	fd_set set;
 	FD_ZERO(&set);
 	FD_SET(udpRecvSocket, &set);

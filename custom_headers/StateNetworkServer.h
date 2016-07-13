@@ -1,7 +1,7 @@
 #ifndef __STATE_NETWORK_SERVER_H
 #define __STATE_NETWORK_SERVER_H
 
-#include "StateNetwork/StatePacket.h"
+#include "StatePacket.h"
 class StateNetworkServer
 {
 private:

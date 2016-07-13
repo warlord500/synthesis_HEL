@@ -16,6 +16,10 @@
     <ClCompile Include="src\SPI.cpp">
       <Filter>custom code</Filter>
     </ClCompile>
+    <ClCompile Include="src\StateNetworkServer.cpp" />
+    <ClCompile Include="Hal.cpp">
+      <Filter>custom code</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="allwpilib\hal\include\hal\Compressor.hpp">
@@ -105,6 +109,18 @@
     <ClInclude Include="allwpilib\hal\include\hal\Power.hpp">
       <Filter>custom code</Filter>
     </ClInclude>
+    <ClInclude Include="custom_headers\PWM_exposed.h">
+      <Filter>custom code\custom_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\StateNetworkServer.h">
+      <Filter>custom code\custom_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\StatePacket.h">
+      <Filter>custom code\custom_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\pthread.h">
+      <Filter>custom code\custom_headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
@@ -113,6 +129,9 @@
     </Filter>
     <Filter Include="custom code">
       <UniqueIdentifier>{c092d0d9-a7ef-42a0-8337-fbeb4737ca37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="custom code\custom_headers">
+      <UniqueIdentifier>{54776ddc-bff6-407f-82f0-962da2aff5dd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
