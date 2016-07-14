@@ -2,32 +2,49 @@
 #include "general.h"
 #include "HAL\cpp\Resource.hpp"
 #include "stdio.h"
+#include "PWM_exposed.h"
 
-static hal::Resource* pwmChannelAllocator = nullptr;
+
+static bool verifyPWMChannel(DigitalPort *port, int32_t *status);
+static hal::Resource* pwmChannels = nullptr;
+float pwmChannelValues[kPwmPins];
+
+
 extern "C" {
-	void setPWM(void* digital_port_pointer, unsigned short value, int32_t *status){}
-	 bool allocatePWMChannel(void* digital_port_pointer, int32_t *status) { return  false; }
-	void freePWMChannel(void* digital_port_pointer, int32_t *status){}
- unsigned short getPWM(void* digital_port_pointer, 
-         int32_t *status)
-    {
-        return 0;
-    }
-	void latchPWMZero(void* digital_port_pointer, int32_t *status){}
-	void setPWMPeriodScale(void* digital_port_pointer, uint32_t squelchMask, int32_t *status){}
-	void* allocatePWM(int32_t *status) { 
-		return nullptr;
+	bool checkPWMChannel(void* digital_port_pointer) {
+		bool retvalue = ((uint32_t)digital_port_pointer - (uint32_t)&pwmChannelValues) / sizeof(float) < kPwmPins;
+		retvalue &= digital_port_pointer > &pwmChannelValues;
 	}
-	void freePWM(void* pwmGenerator, int32_t *status){}
-	void setPWMRate(double rate, int32_t *status){}
-	void setPWMDutyCycle(void* pwmGenerator, double dutyCycle, int32_t *status){}
-	void setPWMOutputChannel(void* pwmGenerator, uint32_t pin, int32_t *status){}
+
+	void setPWM(void* digital_port_pointer, unsigned short value, int32_t *status){}
+
+	 bool allocatePWMChannel(void* digital_port_pointer, int32_t *status) 
+	 {
+		 return true;
+	 }
+	
+}
+/////////////////////////////////////////////////////////////////////////////////////////
+//below is code for pwm_exposed.
+/////////////////////////////////////////////////////////////////////////////////////////
+static bool verifyPWMChannel(DigitalPort *port, int32_t *status) {
+	if (port == NULL) {
+		*status = NULL_PARAMETER;
+		return false;
+	}
+	else if (!checkPWMChannel(port)) {
+		*status = PARAMETER_OUT_OF_RANGE;
+		return false;
+	}
+	else {
+		return true;
+	}
 }
 bool intializePWM() 
 {
-	// the number 18 comes from the digitalINternal file.
-	hal::Resource::CreateResourceObject(&pwmChannelAllocator, 18);
+	//18 is default value for channels.
+	hal::Resource::CreateResourceObject(&pwmChannels, kPwmPins);
 	//the function sets pointer when it is completed.
 	printf("create allocator object.");
-	return pwmChannelAllocator != nullptr;
+	return pwmChannels != nullptr;
 }

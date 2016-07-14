@@ -3,7 +3,7 @@
 #include "stdio.h"
 #include "StateNetworkServer.h"
 #include "custom_headers\PWM_exposed.h"
-
+#include "custom_headers\PWM_exposed.h"
 static DWORD WINAPI emulator(LPVOID nonExistData) // THIS VERSION IS ONLY FOR WINAPI ONLY 
 {
 	printf("executing emulator packet code");
@@ -20,9 +20,10 @@ static DWORD WINAPI emulator(LPVOID nonExistData) // THIS VERSION IS ONLY FOR WI
 	return 0;
 }
 extern "C" {
-	
+
 
 	int HALInitialize(int mode) {
+		bool retvalue; // this is return code info
 		//create thread for sending packet information.
 		// winapi only
 		
@@ -34,20 +35,10 @@ extern "C" {
 				nullptr,          // argument to thread function 
 				0,                      // use default creation flags 
 				&emulatorThreadid);   // returns the thread identifier
-		 if (emulatorThread != nullptr)
-		 {
-			 return 0; //emulator has been initilized successfully.
-		 } else 
-		 {
-			 return -1;
-		 }
+		 retvalue = (emulatorThread != nullptr);
+		 retvalue &= intializePWM();
+		 return 0; // return successfully
 
 
-	
-	}
-
-	
-
-
-
+	}	
 }

@@ -10,9 +10,9 @@ int main()
     int stop;
   
     std::cout << "this is a test project for testing synthesis implementation of hal layer.";
-	std::cout << "before hal initilize!";
-std::cout << "zero if succcess" << HALInitialize(0) << std::endl;
-std::cout << "end of program";
+	std::cout << "succcess init:" << HALInitialize(0) << std::endl;
+	std::cout << allocatePWMChannel
+
 
     std::cin >> stop;
     return 0;
