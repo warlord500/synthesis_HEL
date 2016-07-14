@@ -3,6 +3,7 @@
 
 #include "Windows.h"
 #include <string.h>
+#pragma comment(lib, "Ws2_32.lib") //this is needed to avoid linker errors
 
 StateNetworkServer::StateNetworkServer(void) {
 	udpSocket = 0;
@@ -51,7 +52,7 @@ void StateNetworkServer::Close() {
 #endif
 }
 
-void StateNetworkServer::SendStatePacket(OutputStatePacket pack) {
+ void StateNetworkServer::SendStatePacket(OutputStatePacket pack) {
 	struct sockaddr_in server;	// Send to localhost
 	server.sin_family = AF_INET;
 	server.sin_addr.s_addr = htonl(INADDR_LOOPBACK);

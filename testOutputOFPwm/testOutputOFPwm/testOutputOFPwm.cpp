@@ -2,9 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "HAL\Digital.hpp"
 #include <iostream>
-#include "general.h"
 #include "HAL\HAL.hpp"
 //! this function is not os independent
 int main()

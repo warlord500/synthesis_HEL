@@ -16,8 +16,10 @@
     <ClCompile Include="src\SPI.cpp">
       <Filter>custom code</Filter>
     </ClCompile>
-    <ClCompile Include="src\StateNetworkServer.cpp" />
     <ClCompile Include="Hal.cpp">
+      <Filter>custom code</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StateNetworkServer.cpp">
       <Filter>custom code</Filter>
     </ClCompile>
   </ItemGroup>
@@ -51,9 +53,6 @@
     </ClInclude>
     <ClInclude Include="allwpilib\hal\include\hal\Errors.hpp">
       <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="custom_headers\general.h">
-      <Filter>custom code</Filter>
     </ClInclude>
     <ClInclude Include="allwpilib\hal\include\hal\HAL.hpp">
       <Filter>headers</Filter>
@@ -106,9 +105,6 @@
     <ClInclude Include="allwpilib\hal\include\hal\Utilities.hpp">
       <Filter>headers</Filter>
     </ClInclude>
-    <ClInclude Include="allwpilib\hal\include\hal\Power.hpp">
-      <Filter>custom code</Filter>
-    </ClInclude>
     <ClInclude Include="custom_headers\PWM_exposed.h">
       <Filter>custom code\custom_headers</Filter>
     </ClInclude>
@@ -120,6 +116,12 @@
     </ClInclude>
     <ClInclude Include="custom_headers\pthread.h">
       <Filter>custom code\custom_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\general.h">
+      <Filter>custom code\custom_headers</Filter>
+    </ClInclude>
+    <ClInclude Include="allwpilib\hal\include\hal\Power.hpp">
+      <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
