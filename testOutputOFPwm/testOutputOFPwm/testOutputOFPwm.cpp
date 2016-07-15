@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include <iostream>
-#include "HAL\HAL.h"
+#include "HAL\HAL.hpp"
 #include "PWM_exposed.h"
 //! this function is not os independent
 int main()

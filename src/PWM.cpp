@@ -5,7 +5,6 @@
 #include "PWM_exposed.h"
 
 
-static bool verifyPWMChannel(DigitalPort *port, int32_t *status);
 static hal::Resource* pwmChannels = nullptr;
 float pwmChannelValues[kPwmPins];
 //converts pointers to uint32_t's
@@ -19,19 +18,21 @@ extern "C" {
 	}
 
 
-	 bool allocatePWMChannel(void* digital_port_pointer, int32_t *status) 
+	bool allocatePWMChannel(void* digital_port_pointer, int32_t *status)
 	 {
 		 uint32_t pwmChannelNum = ((uint32_t)digital_port_pointer - (uint32_t)&pwmChannelValues) 
 			 / sizeof(pwmChannelValues[0]);
-		 *status == 0; //successful operation no error
-		 return pwmChannels->Allocate(pwmChannelNum, "pwmChannel");
+		 *status = 0; //successful operation no error
+		 int work = pwmChannels->Allocate(pwmChannelNum, "pwmChannel");
+		 return (work == ~0ul);
 	 }
-	 bool freePWMChannel(void* digital_port_pointer) 
+	void freePWMChannel(void* digital_port_pointer, int32_t *status)
 	 {
 		 uint32_t pwmChannelNum = ((uint32_t)digital_port_pointer - (uint32_t)&pwmChannelValues)
 			 / sizeof(pwmChannelValues[0]);
 		 pwmChannels->Free(pwmChannelNum);
-		 return true;
+		 status == 0;
+		 return; //currently no way to  send out errors
 	 }
 
 }

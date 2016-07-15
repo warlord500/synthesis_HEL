@@ -41,11 +41,11 @@ extern "C" {
 
 
 	}	
-	void* getPort(int pin) 
+	void* getPort(uint8_t pin)
 	{
-		getPortWithModule(pin, 1);//pwm ports
+		return getPortWithModule(pin, 1);//pwm ports
 	}
-	void* getPortWithModule(int pin, int module) 
+	void* getPortWithModule(uint8_t module, uint8_t pin)
 	{
 		if (module == 1)
 		{
