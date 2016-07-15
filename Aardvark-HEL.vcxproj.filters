@@ -22,6 +22,7 @@
     <ClCompile Include="src\StateNetworkServer.cpp">
       <Filter>custom code</Filter>
     </ClCompile>
+    <ClCompile Include="allwpilib\hal\lib\Athena\cpp\Resource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="allwpilib\hal\include\hal\Compressor.hpp">

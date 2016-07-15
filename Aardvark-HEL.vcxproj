@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="allwpilib\hal\lib\Athena\cpp\Resource.cpp" />
     <ClCompile Include="Hal.cpp" />
     <ClCompile Include="src\dllmain.cpp" />
     <ClCompile Include="src\I2C.cpp" />

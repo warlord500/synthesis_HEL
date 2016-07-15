@@ -41,4 +41,18 @@ extern "C" {
 
 
 	}	
+	void* getPort(int pin) 
+	{
+		getPortWithModule(pin, 1);//pwm ports
+	}
+	void* getPortWithModule(int pin, int module) 
+	{
+		if (module == 1)
+		{
+			return &pwmChannelValues[pin];
+		}
+		return nullptr;//no module to be used.
+	}
+	void freePort(void* digital_port_pointer) {return;} //nothing allocated so nothing to free
+
 }

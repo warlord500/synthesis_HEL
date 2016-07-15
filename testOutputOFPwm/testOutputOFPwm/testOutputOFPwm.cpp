@@ -3,16 +3,17 @@
 
 #include "stdafx.h"
 #include <iostream>
-#include "HAL\HAL.hpp"
+#include "HAL\HAL.h"
+#include "PWM_exposed.h"
 //! this function is not os independent
 int main()
 {	
     int stop;
-  
-    std::cout << "this is a test project for testing synthesis implementation of hal layer.";
-	std::cout << "succcess init:" << HALInitialize(0) << std::endl;
-	std::cout << allocatePWMChannel
-
+	void * pwmValues;
+    std::cout << "this is a test project for testing synthesis implementation of hal layer.\n";
+	std::cout << "succcess init:" << HALInitialize(0) << "\n";
+	pwmValues = &pwmChannelValues;
+	std::cout << "is correct digital port" << checkPWMChannel(pwmValues) << "\n";
 
     std::cin >> stop;
     return 0;
