@@ -9,12 +9,15 @@
 int main()
 {	
     int stop;
+	int32_t status;
 	void * pwmValues;
     std::cout << "this is a test project for testing synthesis implementation of hal layer.\n";
 	std::cout << "succcess init:" << HALInitialize(0) << "\n";
-	pwmValues = &pwmChannelValues;
-	std::cout << "is correct digital port" << checkPWMChannel(pwmValues) << "\n";
-
+	void* pwmPort = getPort(0);
+	void* pwmPort2 = getPort(0);
+	std::cout << "allocateChannel"	<<  allocatePWMChannel(pwmPort, &status) << "\n";
+	setPWM(pwmPort, 128,&status);
+	setPWM(pwmPort2, -128, &status);
     std::cin >> stop;
     return 0;
 }
