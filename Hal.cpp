@@ -3,16 +3,23 @@
 #include "stdio.h"
 #include "StateNetworkServer.h"
 #include "custom_headers\PWM_exposed.h"
-#include "custom_headers\PWM_exposed.h"
+#include <algorithm>
+#include <iterator>
+
 static DWORD WINAPI emulator(LPVOID nonExistData) // THIS VERSION IS ONLY FOR WINAPI ONLY 
 {
 	printf("executing emulator packet code");
 	StateNetworkServer server;
 	OutputStatePacket outPack;
+	outPack.dio[0].relayForward = true;
 	server.Open();
 	while (true) {
-		outPack.dio[0].pwmValues[0] = 0.75f;
-		outPack.dio[0].pwmValues[1] = -0.75f;
+		std::array<unsigned short, kPwmPins> pwmCopy;
+		{//keep scope for lock guard to release mutex
+			std::lock_guard<std::mutex> lock(lockerPWMValues);
+			std::copy(pwmChannelValues.begin(), pwmChannelValues.end(), pwmCopy.begin());
+		}
+
 		server.SendStatePacket(outPack);
 		Sleep(50);
 	}
@@ -38,8 +45,6 @@ extern "C" {
 		 retvalue = (emulatorThread != nullptr);
 		 retvalue &= intializePWM();
 		 return 0; // return successfully
-
-
 	}	
 	void* getPort(uint8_t pin)
 	{
@@ -54,5 +59,6 @@ extern "C" {
 		return nullptr;//no module to be used.
 	}
 	void freePort(void* digital_port_pointer) {return;} //nothing allocated so nothing to free
+	
 
 }
