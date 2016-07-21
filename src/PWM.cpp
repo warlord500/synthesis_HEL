@@ -35,7 +35,7 @@ extern "C" {
 		 uint32_t pwmChannelNum = ((uint32_t)digital_port_pointer - (uint32_t)&pwmChannelValues)
 			 / sizeof(pwmChannelValues[0]);
 		 pwmChannels->Free(pwmChannelNum);
-		 *status == 0;
+		 *status = 0;
 		//currently no way to  send out errors
 	 }
 	/*!
@@ -54,7 +54,7 @@ extern "C" {
 		} 
 		else 
 		{
-			*status == NULL_PARAMETER;
+			*status = NULL_PARAMETER;
 			return 0;
 		}
 	}
@@ -73,11 +73,13 @@ extern "C" {
 			//make sure no one is trying to read the data at the same time.
 			std::lock_guard<std::mutex>lock(lockerPWMValues);
 			auto* valueptr = static_cast<unsigned short*>(digital_port_pointer);
-			*valueptr == value; //value is set in pwmChannelValues array
+			*valueptr = value; //value is set in pwmChannelValues array
+			*status = 0;
 		}
 		else {
-			*status == NULL_PARAMETER;
-		}
+			*status = NULL_PARAMETER;
+			return;
+		}	
 	}
 }
 /////////////////////////////////////////////////////////////////////////////////////////

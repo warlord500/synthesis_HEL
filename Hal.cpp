@@ -18,10 +18,12 @@ static DWORD WINAPI emulator(LPVOID nonExistData) // THIS VERSION IS ONLY FOR WI
 			std::lock_guard<std::mutex> lock(lockerPWMValues);
 			std::copy(pwmChannelValues.begin(), pwmChannelValues.end(), pwmCopy.begin());
 		}
-		for (int i = 0; i < kPwmPins; i++) 
+		for (int i = 0; i < kPwmPins; i++)
 		{
-			outPack.dio[0].pwmValues[i] =  (float)pwmCopy[i];
+			outPack.dio[0].pwmValues[i] = (float)pwmCopy[i] / 256;
 		}
+		std::cout << outPack.dio[0].pwmValues[0];
+		std::cout << outPack.dio[0].pwmValues[1];
 		server.SendStatePacket(outPack);
 		Sleep(50);
 	}
@@ -50,17 +52,17 @@ extern "C" {
 	}	
 	void* getPort(uint8_t pin)
 	{
-		return getPortWithModule(pin, 1);//pwm ports
+		return getPortWithModule(1,pin);//pwm ports
 	}
 	void* getPortWithModule(uint8_t module, uint8_t pin)
 	{
 		if (module == 1)
 		{
-			return &pwmChannelValues[pin];
+			return &pwmChannelValues[pin-1];//array 0 index based and pins are 1 based
 		}
 		return nullptr;//no module to be used.
 	}
-	void freePort(void* digital_port_pointer) {return;} //nothing allocated so nothing to free
+	void freePort(void* digital_port_pointer) {return;} //nothing allocated on heap so nothing to free
 	
 
 }
