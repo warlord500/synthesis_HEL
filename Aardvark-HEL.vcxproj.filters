@@ -172,6 +172,9 @@
     <ClInclude Include="custom_headers\pthread.h">
       <Filter>custom code\custom_headers\OSAL</Filter>
     </ClInclude>
+    <ClInclude Include="emulator.h">
+      <Filter>custom code\custom_headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="headers">
