@@ -23,6 +23,27 @@
       <Filter>custom code</Filter>
     </ClCompile>
     <ClCompile Include="allwpilib\hal\lib\Athena\cpp\Resource.cpp" />
+    <ClCompile Include="src\OSAL\Synchronized.cpp">
+      <Filter>custom code\OSAL_src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OSAL\System.cpp">
+      <Filter>custom code\OSAL_src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OSAL\Task.cpp">
+      <Filter>custom code\OSAL_src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FRCNetComm\FRCNetImpl.cpp">
+      <Filter>custom code\FrcNetComm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FRCNetComm\crc32.cpp">
+      <Filter>custom code\FrcNetComm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FRCNetComm\FRCCAN.cpp">
+      <Filter>custom code\FrcNetComm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FRCNetComm\FRCNetComm.cpp">
+      <Filter>custom code\FrcNetComm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="allwpilib\hal\include\hal\Compressor.hpp">
@@ -109,20 +130,47 @@
     <ClInclude Include="custom_headers\PWM_exposed.h">
       <Filter>custom code\custom_headers</Filter>
     </ClInclude>
-    <ClInclude Include="custom_headers\StateNetworkServer.h">
-      <Filter>custom code\custom_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="custom_headers\StatePacket.h">
-      <Filter>custom code\custom_headers</Filter>
-    </ClInclude>
-    <ClInclude Include="custom_headers\pthread.h">
-      <Filter>custom code\custom_headers</Filter>
-    </ClInclude>
     <ClInclude Include="custom_headers\general.h">
       <Filter>custom code\custom_headers</Filter>
     </ClInclude>
     <ClInclude Include="allwpilib\hal\include\hal\Power.hpp">
       <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\FRCNetComm\FRCFakeNetComm.h">
+      <Filter>custom code\custom_headers\frcnetComm</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\FRCNetComm\FRCNetImpl.h">
+      <Filter>custom code\custom_headers\frcnetComm</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\FRCNetComm\FRCNetStructures.h">
+      <Filter>custom code\custom_headers\frcnetComm</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\StatePacket.h">
+      <Filter>custom code\custom_headers\UnitySimNet</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\StateNetworkServer.h">
+      <Filter>custom code\custom_headers\UnitySimNet</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\FRCNetComm\crc32.h">
+      <Filter>custom code\custom_headers\frcnetComm</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\OSAL\OSAL.h">
+      <Filter>custom code\custom_headers\OSAL</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\OSAL\WaitSemaphore.h">
+      <Filter>custom code\custom_headers\OSAL</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\OSAL\System.h">
+      <Filter>custom code\custom_headers\OSAL</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\OSAL\Task.h">
+      <Filter>custom code\custom_headers\OSAL</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\OSAL\Synchronized.h">
+      <Filter>custom code\custom_headers\OSAL</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_headers\pthread.h">
+      <Filter>custom code\custom_headers\OSAL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +183,21 @@
     </Filter>
     <Filter Include="custom code\custom_headers">
       <UniqueIdentifier>{54776ddc-bff6-407f-82f0-962da2aff5dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="custom code\custom_headers\frcnetComm">
+      <UniqueIdentifier>{70a7e744-a679-43dd-91b3-b7b789b0f9da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="custom code\custom_headers\UnitySimNet">
+      <UniqueIdentifier>{285e8e84-2683-45cd-931f-9402ff2aff29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="custom code\custom_headers\OSAL">
+      <UniqueIdentifier>{71e34db4-498e-4f2d-b3ce-ac64af5f3090}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="custom code\OSAL_src">
+      <UniqueIdentifier>{69af1bfa-a9b1-49ce-90ae-c19a86376eaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="custom code\FrcNetComm">
+      <UniqueIdentifier>{5ac7b07c-43fc-4146-ab70-4211da790a62}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
