@@ -150,19 +150,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="allwpilib\hal\lib\Athena\cpp\Resource.cpp" />
+    <ClCompile Include="DIO.cpp" />
     <ClCompile Include="Hal.cpp" />
     <ClCompile Include="src\dllmain.cpp" />
-    <ClCompile Include="src\FRCNetComm\crc32.cpp" />
-    <ClCompile Include="src\FRCNetComm\FRCCAN.cpp" />
-    <ClCompile Include="src\FRCNetComm\FRCNetComm.cpp" />
-    <ClCompile Include="src\FRCNetComm\FRCNetImpl.cpp" />
     <ClCompile Include="src\I2C.cpp" />
-    <ClCompile Include="src\OSAL\Synchronized.cpp" />
-    <ClCompile Include="src\OSAL\System.cpp" />
-    <ClCompile Include="src\OSAL\Task.cpp" />
     <ClCompile Include="src\Power.cpp" />
     <ClCompile Include="src\PWM.cpp" />
-    <ClCompile Include="src\SPI.cpp" />
     <ClCompile Include="src\StateNetworkServer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -194,20 +187,8 @@
     <ClInclude Include="allwpilib\hal\include\hal\Task.hpp" />
     <ClInclude Include="allwpilib\hal\include\hal\Utilities.hpp" />
     <ClInclude Include="allwpilib\hal\include\Log.hpp" />
-    <ClInclude Include="custom_headers\FRCNetComm\crc32.h" />
-    <ClInclude Include="custom_headers\FRCNetComm\FRCFakeNetComm.h" />
-    <ClInclude Include="custom_headers\FRCNetComm\FRCNetImpl.h" />
-    <ClInclude Include="custom_headers\FRCNetComm\FRCNetStructures.h" />
     <ClInclude Include="custom_headers\general.h" />
-    <ClInclude Include="custom_headers\OSAL\OSAL.h" />
-    <ClInclude Include="custom_headers\OSAL\Synchronized.h" />
-    <ClInclude Include="custom_headers\OSAL\System.h" />
-    <ClInclude Include="custom_headers\OSAL\Task.h" />
-    <ClInclude Include="custom_headers\OSAL\WaitSemaphore.h" />
-    <ClInclude Include="custom_headers\pthread.h" />
     <ClInclude Include="custom_headers\PWM_exposed.h" />
-    <ClInclude Include="custom_headers\StateNetworkServer.h" />
-    <ClInclude Include="custom_headers\StatePacket.h" />
     <ClInclude Include="emulator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

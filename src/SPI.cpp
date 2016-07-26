@@ -1,4 +1,4 @@
-#include "HAL\Digital.hpp"
+#include "HAL\SPI.h"
 /*! @file spi.cpp
  *  minimal implmentation of spi protocol.
  * 
@@ -8,23 +8,23 @@
  */
 extern "C" {
 
-	void spiInitialize(uint8_t port, int32_t *status){
+	void HAL_InitializeSPI(uint8_t port, int32_t *status){
 	}
-	int32_t spiTransaction(uint8_t port, uint8_t *dataToSend, uint8_t *dataReceived, uint8_t size){ 
+	int32_t HAL_TransactionSPI(uint8_t port, uint8_t *dataToSend, uint8_t *dataReceived, uint8_t size){
 		return 0; 
 	}
-	int32_t spiWrite(uint8_t port, uint8_t* dataToSend, uint8_t sendSize)
+	int32_t HAL_WriteSPI(uint8_t port, uint8_t* dataToSend, uint8_t sendSize)
 	{ 
 		return 0; 
 	}
-	int32_t spiRead(uint8_t port, uint8_t *buffer, uint8_t count){ 
+	int32_t  HAL_ReadSPI(uint8_t port, uint8_t *buffer, uint8_t count){
 		return 0; 
 	}
-	void spiClose(uint8_t port){
+	void  HAL_ReadSPI(uint8_t port){
 	}
-	void spiSetSpeed(uint8_t port, uint32_t speed){
+	void HAL_CloseSPI(uint8_t port, uint32_t speed){
 	}
-	void spiSetOpts(uint8_t port, int msb_first, int sample_on_trailing, int clk_idle_high){
+	void HAL_SetSPISpeed(uint8_t port, int msb_first, int sample_on_trailing, int clk_idle_high){
 	}
 	void spiSetChipSelectActiveHigh(uint8_t port, int32_t *status){
        	}

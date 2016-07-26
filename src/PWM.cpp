@@ -1,13 +1,13 @@
-#include "HAL/Digital.hpp"
+#include "HAL\PWM.h"
 #include "general.h"
-#include "HAL/cpp/Resource.hpp"
+#include "HAL\handles\DigitalHandleResource.h"
 #include "stdio.h"
 #include "PWM_exposed.h"
-#include "HAL\Errors.hpp"
+#include "HAL\Errors.h"
 #include <mutex>
 #include <array>
 
-static hal::Resource* pwmChannels = nullptr;
+static hal::DigitalHandleResource<HAL_DigitalPWMHandle, HAL_DigitalPWMHandle,kPwmPins>* pwmChannels = nullptr;
 std::array<unsigned short, kPwmPins> pwmChannelValues;
 std::mutex lockerPWMValues;
 //converts pointers to uint32_t's
@@ -15,18 +15,19 @@ static_assert(sizeof(uint32_t) <= sizeof(void *), "This file shoves uint32_ts in
 
 
 extern "C" {
-	bool checkPWMChannel(void* digital_port_pointer) { 
+	bool HAL_checkPWMChannel(void* digital_port_pointer) { 
 		return digital_port_pointer < (&pwmChannelValues + sizeof(pwmChannelValues))
 			&& digital_port_pointer >= &pwmChannelValues;
 	}
 
 
-	bool allocatePWMChannel(void* digital_port_pointer, int32_t *status)
+	/*bool allocatePWMChannel(void* digital_port_pointer, int32_t *status)
 	 {
 		 uint32_t pwmChannelNum = ((uint32_t)digital_port_pointer - (uint32_t)&pwmChannelValues) 
 			 / sizeof(pwmChannelValues[0]);
 		 *status = 0; //successful operation no error
-		 int work = pwmChannels->Allocate(pwmChannelNum, "pwmChannel");
+		// int work = pwmChannels->Allocate(pwmChannelNum, "pwmChannel");
+		 int work = ~0ul;
 		 if (work == ~0ul) *status == RESOURCE_IS_ALLOCATED;
 		 return (work == ~0ul);
 	 }
@@ -37,16 +38,16 @@ extern "C" {
 		 pwmChannels->Free(pwmChannelNum);
 		 *status = 0;
 		//currently no way to  send out errors
-	 }
+	 }*/
 	/*!
 		get the pwm that was set using setpwm
 		@param ret value of getPort() 
 		@param errors capable of getting
 	*/
-	unsigned short getPWM(void* digital_port_pointer, int32_t *status) 
+	unsigned short HAL_getPWM(void* digital_port_pointer, int32_t *status) 
 	{
 		
-		if (checkPWMChannel(digital_port_pointer)) 
+		if (HAL_checkPWMChannel(digital_port_pointer)) 
 		{
 			std::lock_guard<std::mutex> lock (lockerPWMValues);
 			auto* valueptr = static_cast<unsigned short*>(digital_port_pointer); 
@@ -66,9 +67,9 @@ extern "C" {
 	@param ret value of getPort()
 	@param errors capable of getting
 	*/
-	void setPWM(void* digital_port_pointer, unsigned short value, int32_t *status)
+	void HAL_setPWM(void* digital_port_pointer, unsigned short value, int32_t *status)
 	{
-		if (checkPWMChannel(digital_port_pointer))
+		if (HAL_checkPWMChannel(digital_port_pointer))
 		{
 			//make sure no one is trying to read the data at the same time.
 			std::lock_guard<std::mutex>lock(lockerPWMValues);
@@ -88,7 +89,7 @@ extern "C" {
 bool intializePWM() 
 {
 	//18 is default value for channels.
-	hal::Resource::CreateResourceObject(&pwmChannels, kPwmPins);
+	//hal::DigitalHandleResource::CreateResourceObject(&pwmChannels, kPwmPins);
 	//the function sets pointer when it is completed.
 	printf("create allocator object.\n");
 	return pwmChannels != nullptr;
