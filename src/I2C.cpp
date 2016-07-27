@@ -3,7 +3,7 @@
  *  minimal implmentation of i2c protocol.
  * the current implementation simply returns 0 or false or 
  * nothing depending on function header.
- * read functions do not change the buffers.
+ * read functions do not change the buffers params
  */
 #include "HAL/I2C.h"
 

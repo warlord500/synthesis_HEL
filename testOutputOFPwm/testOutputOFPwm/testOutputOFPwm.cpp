@@ -3,13 +3,13 @@
 
 #include "stdafx.h"
 #include <iostream>
-#include "HAL\HAL.hpp"
+#include "HAL\HAL.h"
 #include "PWM_exposed.h"
 //! test the basic functionality of the hal layer.
 //! 
 int main()
 {	
-    int stop;
+    /*int stop;
 	int32_t status;
     std::cout << "this is a test project for testing synthesis implementation of hal layer.\n";
 	std::cout << "succcess init:" << HALInitialize(0) << "\n";
@@ -19,6 +19,6 @@ int main()
    	setPWM(pwmPort, 128,&status);
 	setPWM(pwmPort2, 128, &status);
     std::cin >> stop;
-    return 0;
+    return 0; */
 }
 

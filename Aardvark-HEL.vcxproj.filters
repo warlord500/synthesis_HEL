@@ -7,9 +7,6 @@
     <ClCompile Include="src\Power.cpp">
       <Filter>custom code</Filter>
     </ClCompile>
-    <ClCompile Include="src\I2C.cpp">
-      <Filter>custom code</Filter>
-    </ClCompile>
     <ClCompile Include="src\PWM.cpp">
       <Filter>custom code</Filter>
     </ClCompile>

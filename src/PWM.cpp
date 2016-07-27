@@ -15,42 +15,23 @@ static_assert(sizeof(uint32_t) <= sizeof(void *), "This file shoves uint32_ts in
 
 
 extern "C" {
-	bool HAL_checkPWMChannel(void* digital_port_pointer) { 
-		return digital_port_pointer < (&pwmChannelValues + sizeof(pwmChannelValues))
-			&& digital_port_pointer >= &pwmChannelValues;
+	HAL_Bool HAL_CheckPWMChannel(int32_t pin) {
+		void* Ppin = (void*)pin;
+ 		return Ppin < (&pwmChannelValues + sizeof(pwmChannelValues))
+			&& Ppin >= &pwmChannelValues;
 	}
-
-
-	/*bool allocatePWMChannel(void* digital_port_pointer, int32_t *status)
-	 {
-		 uint32_t pwmChannelNum = ((uint32_t)digital_port_pointer - (uint32_t)&pwmChannelValues) 
-			 / sizeof(pwmChannelValues[0]);
-		 *status = 0; //successful operation no error
-		// int work = pwmChannels->Allocate(pwmChannelNum, "pwmChannel");
-		 int work = ~0ul;
-		 if (work == ~0ul) *status == RESOURCE_IS_ALLOCATED;
-		 return (work == ~0ul);
-	 }
-	void freePWMChannel(void* digital_port_pointer, int32_t *status)
-	 {
-		 uint32_t pwmChannelNum = ((uint32_t)digital_port_pointer - (uint32_t)&pwmChannelValues)
-			 / sizeof(pwmChannelValues[0]);
-		 pwmChannels->Free(pwmChannelNum);
-		 *status = 0;
-		//currently no way to  send out errors
-	 }*/
 	/*!
 		get the pwm that was set using setpwm
 		@param ret value of getPort() 
 		@param errors capable of getting
 	*/
-	unsigned short HAL_getPWM(void* digital_port_pointer, int32_t *status) 
+	int32_t HAL_GetPWMRaw(HAL_DigitalHandle pwm_port_handle, int32_t* status)
 	{
 		
-		if (HAL_checkPWMChannel(digital_port_pointer)) 
+		if (HAL_CheckPWMChannel(pwm_port_handle)) 
 		{
 			std::lock_guard<std::mutex> lock (lockerPWMValues);
-			auto* valueptr = static_cast<unsigned short*>(digital_port_pointer); 
+			unsigned short* valueptr = static_cast<unsigned short*>((void*)(int32_t)pwm_port_handle); 
 			return *valueptr; //value is in pwmChannelValues array
 		} 
 		else 
@@ -58,6 +39,13 @@ extern "C" {
 			*status = NULL_PARAMETER;
 			return 0;
 		}
+	}
+	double HAL_GetPWMSpeed(HAL_DigitalHandle pwm_port_handle, int32_t* status) {
+		return HAL_GetPWMRaw(pwm_port_handle, status);
+	}
+	double HAL_GetPWMPosition(HAL_DigitalHandle pwm_port_handle, int32_t* status) 
+	{
+		return HAL_GetPWMRaw(pwm_port_handle, status);
 	}
 	/*!
 	@brief	set port to value
@@ -67,13 +55,14 @@ extern "C" {
 	@param ret value of getPort()
 	@param errors capable of getting
 	*/
-	void HAL_setPWM(void* digital_port_pointer, unsigned short value, int32_t *status)
+	void HAL_SetPWMRaw(HAL_DigitalHandle pwm_port_handle, int32_t value,
+		int32_t* status)
 	{
-		if (HAL_checkPWMChannel(digital_port_pointer))
+		if (HAL_CheckPWMChannel(pwm_port_handle))
 		{
 			//make sure no one is trying to read the data at the same time.
 			std::lock_guard<std::mutex>lock(lockerPWMValues);
-			auto* valueptr = static_cast<unsigned short*>(digital_port_pointer);
+			auto* valueptr = static_cast<unsigned short*>((void*)(int32_t)pwm_port_handle);
 			*valueptr = value; //value is set in pwmChannelValues array
 			*status = 0;
 		}
@@ -81,6 +70,34 @@ extern "C" {
 			*status = NULL_PARAMETER;
 			return;
 		}	
+	}
+
+	void HAL_SetPWMSpeed(HAL_DigitalHandle pwm_port_handle, double speed,
+		int32_t* status) {
+		HAL_SetPWMRaw(pwm_port_handle, speed, status);
+	}
+	void HAL_SetPWMPosition(HAL_DigitalHandle pwm_port_handle, double position,
+		int32_t* status) {
+		HAL_SetPWMRaw(pwm_port_handle, position, status);
+	}
+
+	void HAL_SetPWMConfig(HAL_DigitalHandle pwm_port_handle, double maxPwm,
+		double deadbandMaxPwm, double centerPwm,
+		double deadbandMinPwm, double minPwm, int32_t* status) {}
+	void HAL_SetPWMConfigRaw(HAL_DigitalHandle pwm_port_handle, int32_t maxPwm,
+		int32_t deadbandMaxPwm, int32_t centerPwm,
+		int32_t deadbandMinPwm, int32_t minPwm,
+		int32_t* status) {}
+	void HAL_GetPWMConfigRaw(HAL_DigitalHandle pwm_port_handle, int32_t* maxPwm,
+		int32_t* deadbandMaxPwm, int32_t* centerPwm,
+		int32_t* deadbandMinPwm, int32_t* minPwm,
+		int32_t* status) {
+		*maxPwm = 0;
+		*deadbandMaxPwm = 0;
+		*deadbandMinPwm = 0;
+		*centerPwm = 0;
+		*minPwm = 0;
+
 	}
 }
 /////////////////////////////////////////////////////////////////////////////////////////

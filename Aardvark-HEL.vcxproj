@@ -84,7 +84,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;FRC_SIMULATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)custom_headers;$(ProjectDir)allwpilib\hal\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)custom_headers;$(ProjectDir)replacement_headers;$(ProjectDir)allwpilib\hal\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
@@ -153,7 +153,6 @@
     <ClCompile Include="DIO.cpp" />
     <ClCompile Include="Hal.cpp" />
     <ClCompile Include="src\dllmain.cpp" />
-    <ClCompile Include="src\I2C.cpp" />
     <ClCompile Include="src\Power.cpp" />
     <ClCompile Include="src\PWM.cpp" />
     <ClCompile Include="src\StateNetworkServer.cpp" />

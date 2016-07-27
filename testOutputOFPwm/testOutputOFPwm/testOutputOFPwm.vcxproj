@@ -88,7 +88,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;FRC_SIMULATOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(solutionDir)allwpilib/hal/include;$(solutionDir)custom_headers;C:\Users\t_belej\Desktop\Aardvark-projects\Aardvark-HEL\allwpilib\hal\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(solutionDir)replacement_headers;$(solutionDir)allwpilib/hal/include;$(solutionDir)custom_headers;C:\Users\t_belej\Desktop\Aardvark-projects\Aardvark-HEL\allwpilib\hal\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

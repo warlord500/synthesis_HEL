@@ -10,18 +10,18 @@
 
 extern "C" {
 
-	void* HAL_getPort(uint8_t pin)
+	HAL_PortHandle HAL_GetPort(int32_t pin)
 	{
-		return HAL_getPortWithModule(1,pin);//pwm ports
+		return HAL_GetPortWithModule(1,pin);//pwm ports
 	}
 
-	void* HAL_getPortWithModule(uint8_t module, uint8_t pin)
+	HAL_PortHandle HAL_GetPortWithModule(int32_t module, int32_t pin)
 	{
 		if (module == 1)
 		{
-			return &pwmChannelValues[pin-1];//array 0 index based and pins are 1 based
+			return (HAL_PortHandle)&pwmChannelValues[pin-1];//array 0 index based and pins are 1 based
 		}
-		return nullptr;//no module to be used.
+		return (HAL_PortHandle)nullptr;//no module to be used.
 	}
 
 	void freePort(void* digital_port_pointer) {return;} //nothing allocated on heap so nothing to free
@@ -34,6 +34,19 @@ extern "C" {
 	HAL_Bool HAL_GetSystemActive(int32_t* status) { return true; }
 	HAL_Bool HAL_GetBrownedOut(int32_t* status) { return false; }
 
+
+
+
+
+	/*! 
+	intialize the other modules. 
+	this gives the library a chance to setup all the global variable 
+	data it relies on. if not called by robot_class macro before main. 
+	this library will have undefined behaivor.
+	in addition to setting up global this intialize spawns up
+	the emulator thread
+
+	*/
 	int HALInitialize(int mode) {
 		bool retvalue; // this is return code info
 					   //create thread for sending packet information.
